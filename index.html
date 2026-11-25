@@ -1,106 +1,560 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Global Insight | Sales Intelligence</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-</head>
-<body>
-  <section id="loginPage" class="login-screen">
-    <div class="login-glow glow-one"></div><div class="login-glow glow-two"></div>
-    <div class="login-content">
-      <div class="brand-mark">GI</div>
-      <p class="eyebrow">GLOBAL SALES INTELLIGENCE</p>
-      <h1>Global <span>Insight.</span></h1>
-      <p class="login-subtitle">Turn Global Sales Data Into Smart Decisions</p>
-      <div class="login-actions">
-        <button class="btn btn-primary" id="loginBtn">Login <span>↗</span></button>
-        <button class="btn btn-outline" id="demoBtn">View Demo Dashboard</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Insight | Sales Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="images (1).jfif" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  </head>
+  <body>
+    <section id="loginPage" class="login-screen">
+      <div class="login-glow glow-one"></div>
+      <div class="login-glow glow-two"></div>
+      <div class="login-content">
+        <div class="brand-mark">GI</div>
+        <p class="eyebrow">GLOBAL SALES INTELLIGENCE</p>
+        <h1>Global <span>Insight.</span></h1>
+        <p class="login-subtitle">
+          Turn Global Sales Data Into Smart Decisions
+        </p>
+        <div class="login-actions">
+          <button class="btn btn-primary" id="loginBtn">
+            Login <span>↗</span>
+          </button>
+          <button class="btn btn-outline" id="demoBtn">
+            View Demo Dashboard
+          </button>
+        </div>
+        <div class="feature-row">
+          <div class="feature-card">
+            <span class="feature-icon">◷</span
+            ><strong>Real-time Analytics</strong
+            ><small>Track performance as it happens</small>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">◎</span><strong>Global Markets</strong
+            ><small>Understand every region</small>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">▤</span><strong>Smart Reports</strong
+            ><small>Turn data into action</small>
+          </div>
+        </div>
+        <p class="login-note">Demo workspace · Sample sales data</p>
       </div>
-      <div class="feature-row">
-        <div class="feature-card"><span class="feature-icon">◷</span><strong>Real-time Analytics</strong><small>Track performance as it happens</small></div>
-        <div class="feature-card"><span class="feature-icon">◎</span><strong>Global Markets</strong><small>Understand every region</small></div>
-        <div class="feature-card"><span class="feature-icon">▤</span><strong>Smart Reports</strong><small>Turn data into action</small></div>
-      </div>
-      <p class="login-note">Demo workspace · Sample sales data</p>
+    </section>
+
+    <div id="appShell" class="app-shell hidden">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="Global Insight home"
+          ><span class="brand-mark small">GI</span
+          ><span>Global<span class="brand-light">Insight</span></span></a
+        >
+        <div class="workspace-label">WORKSPACE</div>
+        <nav class="nav-list">
+          <button class="nav-link active" data-page="overview">
+            <span>▦</span> Overview
+          </button>
+          <button class="nav-link" data-page="sales">
+            <span>↗</span> Sales Analysis
+          </button>
+          <button class="nav-link" data-page="products">
+            <span>◈</span> Products
+          </button>
+          <button class="nav-link" data-page="markets">
+            <span>◎</span> Markets
+          </button>
+          <button class="nav-link" data-page="customers">
+            <span>♙</span> Customers & Reports
+          </button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="help-card">
+            <span class="help-icon">✦</span><strong>Need a hand?</strong>
+            <p>Explore your data with confidence.</p>
+            <a href="mailto:support@example.com">Contact support ↗</a>
+          </div>
+          <div class="user-profile">
+            <div class="avatar">AD</div>
+            <div><strong>Admin User</strong><small>Workspace owner</small></div>
+            <span class="more">···</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="mobile-brand">
+            <span class="brand-mark small">GI</span> Global Insight
+          </div>
+          <div class="breadcrumb">
+            <span>Workspace</span><b>/</b
+            ><strong id="breadcrumbTitle">Overview</strong>
+          </div>
+          <div class="topbar-right">
+            <span class="live-dot"></span
+            ><span class="live-label">Demo data</span
+            ><button class="icon-btn" title="Notifications">♧</button>
+            <div class="avatar">AD</div>
+          </div>
+        </header>
+
+        <section class="page active" id="page-overview">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow">YOUR BUSINESS AT A GLANCE</p>
+              <h1>Overview</h1>
+              <p class="muted">
+                Monitor your global sales performance and key metrics.
+              </p>
+            </div>
+            <button class="btn btn-dark" id="overviewExport">
+              ↓ Export report
+            </button>
+          </div>
+          <div class="filters">
+            <label
+              >Year<select id="yearFilter">
+                <option>2023</option>
+                <option>2024</option>
+                <option>2025</option>
+              </select></label
+            ><label
+              >Region<select id="regionFilter">
+                <option>All</option>
+                <option>North America</option>
+                <option>Europe</option>
+                <option>Asia</option>
+              </select></label
+            ><label
+              >Category<select id="categoryFilter">
+                <option>All</option>
+                <option>Technology</option>
+                <option>Furniture</option>
+                <option>Office Supplies</option>
+              </select></label
+            ><span class="filter-updated">Updated just now</span>
+          </div>
+          <div class="kpi-grid">
+            <article class="kpi-card">
+              <div class="kpi-top">
+                <span>Total Sales</span><span class="kpi-symbol blue">↗</span>
+              </div>
+              <strong>$2.3M</strong
+              ><small class="positive">↑ 12.8% <em>vs last year</em></small>
+              <div class="mini-bars">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-top">
+                <span>Total Profit</span><span class="kpi-symbol green">◈</span>
+              </div>
+              <strong>$450K</strong
+              ><small class="positive">↑ 8.4% <em>vs last year</em></small>
+              <div class="mini-bars green-bars">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-top">
+                <span>Total Orders</span
+                ><span class="kpi-symbol purple">▤</span>
+              </div>
+              <strong>9,800</strong
+              ><small class="positive">↑ 6.2% <em>vs last year</em></small>
+              <div class="mini-bars purple-bars">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-top">
+                <span>Profit Margin</span
+                ><span class="kpi-symbol orange">％</span>
+              </div>
+              <strong>19.5%</strong
+              ><small class="positive">↑ 2.1% <em>vs last year</em></small>
+              <div class="mini-bars orange-bars">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </article>
+          </div>
+          <div class="content-grid overview-grid">
+            <article class="panel chart-panel wide-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Sales Trend Over Time</h3>
+                  <p>Monthly revenue performance</p>
+                </div>
+                <span class="legend-pill"
+                  ><i class="legend-dot"></i> Sales</span
+                >
+              </div>
+              <div id="salesChart" class="chart-container">
+                <canvas id="salesTrendCanvas"></canvas>
+              </div>
+            </article>
+            <article class="panel chart-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Sales by Region</h3>
+                  <p>Geographic distribution</p>
+                </div>
+                <button class="dots-btn">···</button>
+              </div>
+              <div id="mapChart" class="chart-container map-container"></div>
+              <div class="region-legend">
+                <span><i class="north"></i> N. America</span
+                ><span><i class="europe"></i> Europe</span
+                ><span><i class="asia"></i> Asia</span>
+              </div>
+            </article>
+            <article class="panel table-panel full-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Top 5 Products</h3>
+                  <p>Best performing products by sales</p>
+                </div>
+                <a class="text-link" href="#" data-goto="products"
+                  >View all products ↗</a
+                >
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>PRODUCT</th>
+                      <th>CATEGORY</th>
+                      <th>SALES</th>
+                      <th>PROFIT</th>
+                      <th>GROWTH</th>
+                    </tr>
+                  </thead>
+                  <tbody id="topProductsBody"></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="page" id="page-sales">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow">REVENUE PERFORMANCE</p>
+              <h1>Sales Analysis</h1>
+              <p class="muted">
+                Explore revenue, profit and order trends over time.
+              </p>
+            </div>
+            <button class="btn btn-dark export-btn">↓ Export report</button>
+          </div>
+          <div class="kpi-grid two-kpis">
+            <article class="kpi-card">
+              <div class="kpi-top">
+                <span>Monthly Sales</span><span class="kpi-symbol blue">↗</span>
+              </div>
+              <strong>$192.4K</strong
+              ><small class="positive">↑ 9.6% <em>vs previous month</em></small>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-top">
+                <span>Yearly Growth</span
+                ><span class="kpi-symbol green">⌁</span>
+              </div>
+              <strong>+18.2%</strong
+              ><small class="positive">↑ 3.4% <em>vs previous year</em></small>
+            </article>
+          </div>
+          <div class="content-grid two-col">
+            <article class="panel chart-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Sales vs Profit</h3>
+                  <p>Monthly comparison · USD</p>
+                </div>
+              </div>
+              <div id="salesProfitChart" class="chart-container">
+                <canvas id="salesProfitCanvas"></canvas>
+              </div>
+            </article>
+            <article class="panel chart-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Sales by Month</h3>
+                  <p>Monthly sales volume</p>
+                </div>
+              </div>
+              <div id="monthlySalesChart" class="chart-container">
+                <canvas id="monthlySalesCanvas"></canvas>
+              </div>
+            </article>
+            <article class="panel table-panel full-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Sales by Country</h3>
+                  <p>Country-level performance breakdown</p>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>COUNTRY</th>
+                      <th>SALES</th>
+                      <th>PROFIT</th>
+                      <th>ORDERS</th>
+                    </tr>
+                  </thead>
+                  <tbody id="countrySalesBody"></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="page" id="page-products">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow">PRODUCT PERFORMANCE</p>
+              <h1>Products</h1>
+              <p class="muted">
+                Discover your best sellers and most profitable categories.
+              </p>
+            </div>
+            <button class="btn btn-dark export-btn">↓ Export report</button>
+          </div>
+          <div class="filters">
+            <label
+              >Category<select id="productCategory">
+                <option>All Categories</option>
+                <option>Technology</option>
+                <option>Furniture</option>
+                <option>Office Supplies</option>
+              </select></label
+            ><span class="filter-updated">Showing product performance</span>
+          </div>
+          <div class="kpi-grid two-kpis">
+            <article class="kpi-card">
+              <div class="kpi-top">
+                <span>Best Seller Product</span
+                ><span class="kpi-symbol green">★</span>
+              </div>
+              <strong class="product-kpi">Canon imageCLASS</strong
+              ><small class="muted">Technology · $61,599 sales</small>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-top">
+                <span>Lowest Profit Product</span
+                ><span class="kpi-symbol orange">!</span>
+              </div>
+              <strong class="product-kpi">Cubify CubeX</strong
+              ><small class="negative">−$8,879 profit</small>
+            </article>
+          </div>
+          <div class="content-grid two-col">
+            <article class="panel chart-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Top 10 Products by Sales</h3>
+                  <p>Highest revenue generating products</p>
+                </div>
+              </div>
+              <div id="topProductsChart" class="chart-container">
+                <canvas id="topProductsCanvas"></canvas>
+              </div>
+            </article>
+            <article class="panel chart-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Profit by Category</h3>
+                  <p>Contribution to total profit</p>
+                </div>
+              </div>
+              <div id="profitChart" class="chart-container">
+                <canvas id="profitCanvas"></canvas>
+              </div>
+            </article>
+            <article class="panel table-panel full-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Product Catalogue</h3>
+                  <p>Sales, profit and customer ratings</p>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>PRODUCT</th>
+                      <th>CATEGORY</th>
+                      <th>SALES</th>
+                      <th>PROFIT</th>
+                      <th>RATING</th>
+                    </tr>
+                  </thead>
+                  <tbody id="productsBody"></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="page" id="page-markets">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow">GLOBAL FOOTPRINT</p>
+              <h1>Markets</h1>
+              <p class="muted">Compare market performance across the world.</p>
+            </div>
+            <button class="btn btn-dark export-btn">↓ Export report</button>
+          </div>
+          <article class="panel market-map-panel">
+            <div class="panel-heading">
+              <div>
+                <h3>Global Sales Map</h3>
+                <p>Sales distribution by country</p>
+              </div>
+              <span class="legend-pill"
+                ><i class="legend-dot"></i> Sales volume</span
+              >
+            </div>
+            <div id="worldMap" class="world-map"></div>
+          </article>
+          <article class="panel table-panel market-table">
+            <div class="panel-heading">
+              <div>
+                <h3>Market Comparison</h3>
+                <p>Regional performance overview</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>MARKET</th>
+                    <th>SALES</th>
+                    <th>PROFIT</th>
+                    <th>GROWTH</th>
+                  </tr>
+                </thead>
+                <tbody id="marketBody"></tbody>
+              </table>
+            </div>
+          </article>
+          <div class="content-grid two-col">
+            <article class="panel chart-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Sales by Segment</h3>
+                  <p>Customer segment contribution</p>
+                </div>
+              </div>
+              <div id="segmentChart" class="chart-container">
+                <canvas id="segmentCanvas"></canvas>
+              </div>
+            </article>
+            <article class="panel chart-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Shipping Performance</h3>
+                  <p>Sales by shipping method</p>
+                </div>
+              </div>
+              <div id="shippingChart" class="chart-container">
+                <canvas id="shippingCanvas"></canvas>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="page" id="page-customers">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow">CUSTOMER RELATIONSHIPS</p>
+              <h1>Customers & Reports</h1>
+              <p class="muted">
+                Understand customer value and export business-ready reports.
+              </p>
+            </div>
+            <div class="export-actions">
+              <button class="btn btn-outline-dark" id="exportCsv">
+                ↓ Export Excel / CSV</button
+              ><button class="btn btn-dark" id="exportPdf">↓ Export PDF</button>
+            </div>
+          </div>
+          <div class="kpi-grid two-kpis">
+            <article class="kpi-card">
+              <div class="kpi-top">
+                <span>Total Customers</span
+                ><span class="kpi-symbol blue">♙</span>
+              </div>
+              <strong>6,240</strong
+              ><small class="positive">↑ 11.3% <em>vs last year</em></small>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-top">
+                <span>Repeat Customers</span
+                ><span class="kpi-symbol green">↻</span>
+              </div>
+              <strong>2,180</strong
+              ><small class="positive">34.9% <em>customer retention</em></small>
+            </article>
+          </div>
+          <article class="panel table-panel">
+            <div class="panel-heading">
+              <div>
+                <h3>Customer Directory</h3>
+                <p>Top customers by purchase value</p>
+              </div>
+              <div class="search-box">
+                <span>⌕</span
+                ><input id="customerSearch" placeholder="Search customers..." />
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>CUSTOMER</th>
+                    <th>COUNTRY</th>
+                    <th>ORDERS</th>
+                    <th>TOTAL PURCHASE</th>
+                  </tr>
+                </thead>
+                <tbody id="customersBody"></tbody>
+              </table>
+            </div>
+          </article>
+          <article class="insight-card">
+            <div class="insight-icon">✦</div>
+            <div>
+              <span class="eyebrow">INTELLIGENCE BRIEFING</span>
+              <h3>AI Insight</h3>
+              <p>
+                Sales in Asia increased by <strong>30%</strong> this period,
+                driven by strong Technology demand. Consider increasing
+                inventory in high-growth markets and reviewing shipping capacity
+                before the next quarter.
+              </p>
+              <small>Sample insight · Replace with your analytics model</small>
+            </div>
+            <span class="insight-spark">✧</span>
+          </article>
+        </section>
+        <footer class="footer">
+          <span>© 2025 Global Insight</span
+          ><span>Sales intelligence platform <i></i> Demo environment</span>
+        </footer>
+      </main>
     </div>
-  </section>
-
-  <div id="appShell" class="app-shell hidden">
-    <aside class="sidebar">
-      <a class="brand" href="#" aria-label="Global Insight home"><span class="brand-mark small">GI</span><span>Global<span class="brand-light">Insight</span></span></a>
-      <div class="workspace-label">WORKSPACE</div>
-      <nav class="nav-list">
-        <button class="nav-link active" data-page="overview"><span>▦</span> Overview</button>
-        <button class="nav-link" data-page="sales"><span>↗</span> Sales Analysis</button>
-        <button class="nav-link" data-page="products"><span>◈</span> Products</button>
-        <button class="nav-link" data-page="markets"><span>◎</span> Markets</button>
-        <button class="nav-link" data-page="customers"><span>♙</span> Customers & Reports</button>
-      </nav>
-      <div class="sidebar-bottom">
-        <div class="help-card"><span class="help-icon">✦</span><strong>Need a hand?</strong><p>Explore your data with confidence.</p><a href="mailto:support@example.com">Contact support ↗</a></div>
-        <div class="user-profile"><div class="avatar">AD</div><div><strong>Admin User</strong><small>Workspace owner</small></div><span class="more">···</span></div>
-      </div>
-    </aside>
-
-    <main class="main-content">
-      <header class="topbar">
-        <div class="mobile-brand"><span class="brand-mark small">GI</span> Global Insight</div>
-        <div class="breadcrumb"><span>Workspace</span><b>/</b><strong id="breadcrumbTitle">Overview</strong></div>
-        <div class="topbar-right"><span class="live-dot"></span><span class="live-label">Demo data</span><button class="icon-btn" title="Notifications">♧</button><div class="avatar">AD</div></div>
-      </header>
-
-      <section class="page active" id="page-overview">
-        <div class="page-heading"><div><p class="eyebrow">YOUR BUSINESS AT A GLANCE</p><h1>Overview</h1><p class="muted">Monitor your global sales performance and key metrics.</p></div><button class="btn btn-dark" id="overviewExport">↓ Export report</button></div>
-        <div class="filters"><label>Year<select id="yearFilter"><option>2023</option><option>2024</option><option>2025</option></select></label><label>Region<select id="regionFilter"><option>All</option><option>North America</option><option>Europe</option><option>Asia</option></select></label><label>Category<select id="categoryFilter"><option>All</option><option>Technology</option><option>Furniture</option><option>Office Supplies</option></select></label><span class="filter-updated">Updated just now</span></div>
-        <div class="kpi-grid">
-          <article class="kpi-card"><div class="kpi-top"><span>Total Sales</span><span class="kpi-symbol blue">↗</span></div><strong>$2.3M</strong><small class="positive">↑ 12.8% <em>vs last year</em></small><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
-          <article class="kpi-card"><div class="kpi-top"><span>Total Profit</span><span class="kpi-symbol green">◈</span></div><strong>$450K</strong><small class="positive">↑ 8.4% <em>vs last year</em></small><div class="mini-bars green-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
-          <article class="kpi-card"><div class="kpi-top"><span>Total Orders</span><span class="kpi-symbol purple">▤</span></div><strong>9,800</strong><small class="positive">↑ 6.2% <em>vs last year</em></small><div class="mini-bars purple-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
-          <article class="kpi-card"><div class="kpi-top"><span>Profit Margin</span><span class="kpi-symbol orange">％</span></div><strong>19.5%</strong><small class="positive">↑ 2.1% <em>vs last year</em></small><div class="mini-bars orange-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
-        </div>
-        <div class="content-grid overview-grid">
-          <article class="panel chart-panel wide-panel"><div class="panel-heading"><div><h3>Sales Trend Over Time</h3><p>Monthly revenue performance</p></div><span class="legend-pill"><i class="legend-dot"></i> Sales</span></div><div id="salesChart" class="chart-container"><canvas id="salesTrendCanvas"></canvas></div></article>
-          <article class="panel chart-panel"><div class="panel-heading"><div><h3>Sales by Region</h3><p>Geographic distribution</p></div><button class="dots-btn">···</button></div><div id="mapChart" class="chart-container map-container"></div><div class="region-legend"><span><i class="north"></i> N. America</span><span><i class="europe"></i> Europe</span><span><i class="asia"></i> Asia</span></div></article>
-          <article class="panel table-panel full-panel"><div class="panel-heading"><div><h3>Top 5 Products</h3><p>Best performing products by sales</p></div><a class="text-link" href="#" data-goto="products">View all products ↗</a></div><div class="table-wrap"><table><thead><tr><th>PRODUCT</th><th>CATEGORY</th><th>SALES</th><th>PROFIT</th><th>GROWTH</th></tr></thead><tbody id="topProductsBody"></tbody></table></div></article>
-        </div>
-      </section>
-
-      <section class="page" id="page-sales">
-        <div class="page-heading"><div><p class="eyebrow">REVENUE PERFORMANCE</p><h1>Sales Analysis</h1><p class="muted">Explore revenue, profit and order trends over time.</p></div><button class="btn btn-dark export-btn">↓ Export report</button></div>
-        <div class="kpi-grid two-kpis"><article class="kpi-card"><div class="kpi-top"><span>Monthly Sales</span><span class="kpi-symbol blue">↗</span></div><strong>$192.4K</strong><small class="positive">↑ 9.6% <em>vs previous month</em></small></article><article class="kpi-card"><div class="kpi-top"><span>Yearly Growth</span><span class="kpi-symbol green">⌁</span></div><strong>+18.2%</strong><small class="positive">↑ 3.4% <em>vs previous year</em></small></article></div>
-        <div class="content-grid two-col"><article class="panel chart-panel"><div class="panel-heading"><div><h3>Sales vs Profit</h3><p>Monthly comparison · USD</p></div></div><div id="salesProfitChart" class="chart-container"><canvas id="salesProfitCanvas"></canvas></div></article><article class="panel chart-panel"><div class="panel-heading"><div><h3>Sales by Month</h3><p>Monthly sales volume</p></div></div><div id="monthlySalesChart" class="chart-container"><canvas id="monthlySalesCanvas"></canvas></div></article><article class="panel table-panel full-panel"><div class="panel-heading"><div><h3>Sales by Country</h3><p>Country-level performance breakdown</p></div></div><div class="table-wrap"><table><thead><tr><th>COUNTRY</th><th>SALES</th><th>PROFIT</th><th>ORDERS</th></tr></thead><tbody id="countrySalesBody"></tbody></table></div></article></div>
-      </section>
-
-      <section class="page" id="page-products">
-        <div class="page-heading"><div><p class="eyebrow">PRODUCT PERFORMANCE</p><h1>Products</h1><p class="muted">Discover your best sellers and most profitable categories.</p></div><button class="btn btn-dark export-btn">↓ Export report</button></div>
-        <div class="filters"><label>Category<select id="productCategory"><option>All Categories</option><option>Technology</option><option>Furniture</option><option>Office Supplies</option></select></label><span class="filter-updated">Showing product performance</span></div>
-        <div class="kpi-grid two-kpis"><article class="kpi-card"><div class="kpi-top"><span>Best Seller Product</span><span class="kpi-symbol green">★</span></div><strong class="product-kpi">Canon imageCLASS</strong><small class="muted">Technology · $61,599 sales</small></article><article class="kpi-card"><div class="kpi-top"><span>Lowest Profit Product</span><span class="kpi-symbol orange">!</span></div><strong class="product-kpi">Cubify CubeX</strong><small class="negative">−$8,879 profit</small></article></div>
-        <div class="content-grid two-col"><article class="panel chart-panel"><div class="panel-heading"><div><h3>Top 10 Products by Sales</h3><p>Highest revenue generating products</p></div></div><div id="topProductsChart" class="chart-container"><canvas id="topProductsCanvas"></canvas></div></article><article class="panel chart-panel"><div class="panel-heading"><div><h3>Profit by Category</h3><p>Contribution to total profit</p></div></div><div id="profitChart" class="chart-container"><canvas id="profitCanvas"></canvas></div></article><article class="panel table-panel full-panel"><div class="panel-heading"><div><h3>Product Catalogue</h3><p>Sales, profit and customer ratings</p></div></div><div class="table-wrap"><table><thead><tr><th>PRODUCT</th><th>CATEGORY</th><th>SALES</th><th>PROFIT</th><th>RATING</th></tr></thead><tbody id="productsBody"></tbody></table></div></article></div>
-      </section>
-
-      <section class="page" id="page-markets">
-        <div class="page-heading"><div><p class="eyebrow">GLOBAL FOOTPRINT</p><h1>Markets</h1><p class="muted">Compare market performance across the world.</p></div><button class="btn btn-dark export-btn">↓ Export report</button></div>
-        <article class="panel market-map-panel"><div class="panel-heading"><div><h3>Global Sales Map</h3><p>Sales distribution by country</p></div><span class="legend-pill"><i class="legend-dot"></i> Sales volume</span></div><div id="worldMap" class="world-map"></div></article>
-        <article class="panel table-panel market-table"><div class="panel-heading"><div><h3>Market Comparison</h3><p>Regional performance overview</p></div></div><div class="table-wrap"><table><thead><tr><th>MARKET</th><th>SALES</th><th>PROFIT</th><th>GROWTH</th></tr></thead><tbody id="marketBody"></tbody></table></div></article>
-        <div class="content-grid two-col"><article class="panel chart-panel"><div class="panel-heading"><div><h3>Sales by Segment</h3><p>Customer segment contribution</p></div></div><div id="segmentChart" class="chart-container"><canvas id="segmentCanvas"></canvas></div></article><article class="panel chart-panel"><div class="panel-heading"><div><h3>Shipping Performance</h3><p>Sales by shipping method</p></div></div><div id="shippingChart" class="chart-container"><canvas id="shippingCanvas"></canvas></div></article></div>
-      </section>
-
-      <section class="page" id="page-customers">
-        <div class="page-heading"><div><p class="eyebrow">CUSTOMER RELATIONSHIPS</p><h1>Customers & Reports</h1><p class="muted">Understand customer value and export business-ready reports.</p></div><div class="export-actions"><button class="btn btn-outline-dark" id="exportCsv">↓ Export Excel / CSV</button><button class="btn btn-dark" id="exportPdf">↓ Export PDF</button></div></div>
-        <div class="kpi-grid two-kpis"><article class="kpi-card"><div class="kpi-top"><span>Total Customers</span><span class="kpi-symbol blue">♙</span></div><strong>6,240</strong><small class="positive">↑ 11.3% <em>vs last year</em></small></article><article class="kpi-card"><div class="kpi-top"><span>Repeat Customers</span><span class="kpi-symbol green">↻</span></div><strong>2,180</strong><small class="positive">34.9% <em>customer retention</em></small></article></div>
-        <article class="panel table-panel"><div class="panel-heading"><div><h3>Customer Directory</h3><p>Top customers by purchase value</p></div><div class="search-box"><span>⌕</span><input id="customerSearch" placeholder="Search customers..." /></div></div><div class="table-wrap"><table><thead><tr><th>CUSTOMER</th><th>COUNTRY</th><th>ORDERS</th><th>TOTAL PURCHASE</th></tr></thead><tbody id="customersBody"></tbody></table></div></article>
-        <article class="insight-card"><div class="insight-icon">✦</div><div><span class="eyebrow">INTELLIGENCE BRIEFING</span><h3>AI Insight</h3><p>Sales in Asia increased by <strong>30%</strong> this period, driven by strong Technology demand. Consider increasing inventory in high-growth markets and reviewing shipping capacity before the next quarter.</p><small>Sample insight · Replace with your analytics model</small></div><span class="insight-spark">✧</span></article>
-      </section>
-      <footer class="footer"><span>© 2025 Global Insight</span><span>Sales intelligence platform <i></i> Demo environment</span></footer>
-    </main>
-  </div>
-  <script src="app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>
